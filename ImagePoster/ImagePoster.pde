@@ -17,7 +17,7 @@ void setup() {
   size(800, 438);
   imagem();
   paleta();
-  compara();
+  comparaCores();
   
 }
 
@@ -51,7 +51,7 @@ void imagem() {
   }
 }
 
-void compara() {
+void comparaCores() {
   for (int i=0; i<dimension; i++) {
     for (int j=0; j<escolha; j++) {
       distance[j]= sqrt((sq(r[i]-red[j]))+(sq(g[i]-green[j]))+(sq(b[i]-blue[j])));
