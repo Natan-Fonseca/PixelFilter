@@ -35,18 +35,20 @@ def prepare_server(host, port):
     return server
 
 def run_server(server, stream, bf_size):
-    # Listen for incoming datagrams
+    # Listen for incoming datagrams   
     while (True):
         msg, addr = server.recvfrom(bf_size)
-
+        
+        stream.configure_stream(msg) #unica mudança feita no server
+        
         server.sendto(next(stream), addr)
 
 if __name__ == '__main__':
     buffer_size = DEFAULT_BUFFER_SIZE
     host_name, host_port = DEFAULT_HOST_NAME, DEFAULT_HOST_PORT
     image_path = DEFAULT_IMAGE_PATH
-
-    stream = image.ImageStreamServer('godot.png')
+    
+    stream = image.ImageStreamServer(image_path)
     server = prepare_server(host_name, host_port)
     run_server(server, stream, buffer_size)
 

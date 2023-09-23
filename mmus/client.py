@@ -12,7 +12,7 @@ if __name__ == '__main__':
             server.DEFAULT_HOST_PORT
             )
 
-    msg_to_server = str.encode('Hello from client, UDP Server!')
+    msg_to_server = str.encode('600 .jpg') #mudei a mensagem anterior para ja mandar o tamanho e formato desejado que ja é aplicado na imagem
 
     # Create a UDP socket at client side
     client = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
@@ -21,7 +21,7 @@ if __name__ == '__main__':
         # Send to server using created UDP socket
         client.sendto(msg_to_server, server_config)
 
-        image_data, msg_from_server,  = client.recvfrom(server_buffer_size)
+        image_data, msg_from_server  = client.recvfrom(server_buffer_size)
         
         image_array = np.frombuffer(image_data, dtype=np.uint8)
         frame = cv2.imdecode(image_array, cv2.IMREAD_COLOR)
