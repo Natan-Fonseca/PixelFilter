@@ -12,10 +12,10 @@ class VideoStreamServer:
 
     def __next__(self):
         ret, frame = self.cap.read()
+        print(frame.shape[1]/frame.shape[0])
         # Codificar o quadro como JPEG antes de enviá-lo
         frame = imutils.resize(frame, self.dim_x) #aqui é onde realmente muda o tamanho da imagem
         _, buffer = cv2.imencode(self.compression_format, frame)
-        
         return buffer.tobytes()
 
     def configure_stream(self, message):

@@ -6,7 +6,7 @@ import numpy as np
 import image
 import video
 
-DEFAULT_BUFFER_SIZE = 1024000
+DEFAULT_BUFFER_SIZE = 102400000
 DEFAULT_HOST_NAME = '127.0.0.1'
 DEFAULT_HOST_PORT = 80
 DEFAULT_IMAGE_PATH = 'godot.png' 
